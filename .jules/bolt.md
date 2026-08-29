@@ -1,0 +1,3 @@
+## 2024-11-20 - [Pandas apply optimization: pre-compiling regex]
+**Learning:** Calling `re.sub(pattern, ...)` with a raw string pattern inside a function mapped over a large dataset using Pandas `apply` compiles the regex on every iteration. For large datasets (e.g. 400k+ rows), this is a significant bottleneck.
+**Action:** Always extract and pre-compile regular expressions (`re.compile`) globally or at a broader scope when using them inside loops or mapping functions over large Series/DataFrames.
