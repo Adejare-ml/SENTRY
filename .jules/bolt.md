@@ -1,0 +1,3 @@
+## 2025-02-18 - [NLTK Lemmatizer Performance Bottleneck]
+**Learning:** [NLTK's `WordNetLemmatizer` is a significant performance bottleneck when applied to large datasets like the Enron email dataset. Because `lemmatize()` is called for every word in every document and is computationally expensive, it results in slow preprocessing times.]
+**Action:** [Next time when using `WordNetLemmatizer` or similar expensive NLTK functions in a loop over large datasets, wrap the function call with `functools.lru_cache` to memoize the results, and ensure regex patterns used for text cleaning are pre-compiled using `re.compile()` to maximize throughput.]
